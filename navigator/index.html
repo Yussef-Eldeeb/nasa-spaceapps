@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Space Gallery</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #010c1b;
+      color: #E0E7FF;
+      text-align: center;
+    }
+nav {
+  position: fixed;      
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(10, 10, 40, 0.85); 
+  backdrop-filter: blur(5px);         
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin: 0;
+  padding: 15px 0;
+}
+nav a {
+  color: #e0e7ff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: color 0.3s, transform 0.2s;
+}
+nav a:hover {
+  color: #60a5fa;          
+  transform: scale(1.1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  padding-top: 100px;
+}
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 20px;
+      background: #0d0d0d;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      letter-spacing: 2px;
+    }
+
+    nav a:hover {
+      color: #aaa;
+    }
+
+
+    .hero {
+      margin: 40px 0;
+    }
+    .hero h1 {
+      font-size: 60px;
+      margin: 0;
+    }
+    .hero p {
+      font-size: 18px;
+      color: #ccc;
+      letter-spacing: 2px;
+    }
+
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 15px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      border-radius: 6px;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background: rgba(0,0,0,0.9);
+    }
+
+    .modal img {
+      display: block;
+      max-width: 90%;
+      max-height: 80%;
+      margin: 50px auto;
+      border-radius: 10px;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+    }
+    .about-section{background:var(--space-dark);color:#fff}
+    .about-section h2{font-weight:800;color:var(--gold)}
+    .about-section p{color:#ccc;font-size:1.08rem}
+    .about-card{background:var(--space-mid);border:none;border-radius:16px;padding:22px;transition:.3s;box-shadow:0 4px 15px rgba(0,0,0,.6)}
+    .about-card:hover{transform:translateY(-10px);box-shadow:0 8px 25px rgba(0,0,0,.9)}
+    .about-card .icon{font-size:2.4rem;margin-bottom:10px}
+    .landing{height:100vh;background:url('WhatsApp Image 2025-08-17 at 22.11.02_5151761b.jpg') no-repeat center/cover;position:relative;text-shadow:2px 2px 8px #000}
+    .landing::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.55)}
+    .landing .content{position:relative;z-index:2}
+    .landing .content h1{font-size:clamp(2rem,4vw,3.2rem);font-weight:800;animation:fadeIn 1.2s ease both}
+    .scroll-btn{font-size:1.1rem;background:linear-gradient(45deg,var(--gold),#ff7b00);border:none;padding:12px 26px;border-radius:50px;color:#000;font-weight:800;box-shadow:0 4px 15px rgba(0,0,0,.6);transition:.25s}
+    .scroll-btn:hover{transform:scale(1.08);background:linear-gradient(45deg,#ff7b00,var(--gold))}
+
+    @keyframes fadeIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes bounce{0%,20%,50%,80%,100%{transform:translateY(0)}40%{transform:translateY(-14px)}60%{transform:translateY(-8px)}}
+    .scroll-btn{animation:bounce 2s infinite}
+    .solar-section{background:radial-gradient(circle at center,#1a1a40,var(--space-dark));color:#fff}
+    .solar-system{position:relative;width:600px;height:600px;margin:0 auto}
+    .sun{width:100px;height:100px;background:radial-gradient(circle,yellow,orange,red);border-radius:50%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);box-shadow:0 0 50px rgba(255,200,0,.9)}
+    .orbit{position:absolute;border:1px dashed rgba(255,255,255,.2);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);animation:rotate linear infinite}
+    .orbit1{width:140px;height:140px;animation-duration:10s}
+    .orbit2{width:200px;height:200px;animation-duration:15s}
+    .orbit3{width:260px;height:260px;animation-duration:20s}
+    .orbit4{width:320px;height:320px;animation-duration:25s}
+    .orbit5{width:400px;height:400px;animation-duration:35s}
+    .orbit6{width:480px;height:480px;animation-duration:45s}
+    .orbit7{width:540px;height:540px;animation-duration:55s}
+    .orbit8{width:600px;height:600px;animation-duration:65s}
+    @keyframes rotate{from{transform:translate(-50%,-50%) rotate(0)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+
+    .planet{width:25px;height:25px;border-radius:50%;position:absolute;top:0;left:50%;transform:translateX(-50%);cursor:pointer}
+    .mercury{background:gray}
+    .venus{background:#e0b144}
+    .earth{background:#2e8bff}
+    .mars{background:#d14a28}
+    .jupiter{background:#d2b48c;width:40px;height:40px}
+    .saturn{background:#deb887;width:35px;height:35px;position:absolute;border-radius:50%;z-index:2}
+    .uranus{background:#48d1cc}
+    .neptune{background:#4169e1}
+
+
+    .aaa{
+      height: 100vh;
+      margin: 0 auto;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      top: 130px;
+
+
+    }
+
+
+.explore-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: linear-gradient(90deg, #4F46E5, #1E3A8A);
+  color: white;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.explore-btn:hover {
+  transform: scale(1.1);
+  background: linear-gradient(90deg, #6366F1, #2563EB);
+}
+
+
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://www.transparenttextures.com/patterns/stardust.png');
+  animation: moveStars 40s linear infinite;
+  z-index: -1;
+  opacity: 0.2;
+}
+
+@keyframes moveStars {
+  from {background-position: 0 0;}
+  to {background-position: 1000px 1000px;}
+}
+.saturn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 30px;
+  background: radial-gradient(ellipse at center, rgba(240, 220, 180, 0.9), rgba(120, 80, 30, 0.3));
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotateX(60deg);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  z-index: 0;
+}
+
+    
+  </style>
+</head>
+<body>
+<nav>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#planets">Planets</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#gallery">GALLERY</a></li>
+  </ul>
+</nav>
+  <div class="aaa">
+  <section id="home" class="hero">
+    <h1>Welcome to Space</h1>
+    <p>Explore the mysteries of the universe</p>
+    <div class="stars"></div>
+  </section>
+  </div>
+
+<section id="about" class="about-section py-5 text-center">
+    <div class="container">
+      <h2 class="mb-3 section-title"> About the site</h2>
+      <p class="mb-5">This site explanins the celestial bodies close to the sun in a simple and enjoyable way.</p><div class="row g-4">
+    <div class="col-md-4" data-aos="fade-up">
+      <div class="card about-card h-100">
+        <div class="card-body">
+          <div class="icon">📡</div>
+          <h5 class="card-title">Follow up</h5>
+          <p class="card-text">Monitoring celestial bodies close to sun</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4" data-aos="fade-up" data-aos-delay="150">
+      <div class="card about-card h-100">
+        <div class="card-body">
+          <div class="icon">🔭</div>
+          <h5 class="card-title">Knowledge</h5>
+          <p class="card-text">Simplified information about planets and bodies</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+      <div class="card about-card h-100">
+        <div class="card-body">
+          <div class="icon">🚀</div>
+          <h5 class="card-title">Follow up</h5>
+          <p class="card-text">We let you explore space as if you were in it</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </section>  
+
+
+<section id="gallery">
+  
+
+<div class="hero">
+    <h1>SPACE</h1>
+    <p>DISCOVER THE UNIVERSE</p>
+  </div>
+  <div class="gallery">
+    <img src="img2.webp" alt="Space Image">
+    <img src="img1.webp" alt="Space Image">
+    <img src="img3.webp" alt="Space Image">
+    <img src="img4.webp" alt="Space Image">
+    <img src="img5.webp" alt="Space Image">
+    <img src="img6.webp" alt="Space Image">
+    <img src="img7.webp" alt="Space Image">
+    <img src="img8.webp" alt="Space Image">
+    <img src="img9.webp" alt="Space Image">
+    <img src="img10.webp" alt="Space Image">
+    <img src="img11.webp" alt="Space Image">
+    <img src="img12.webp" alt="Space Image">
+    <img src="img13.webp" alt="Space Image">
+    <img src="img14.webp" alt="Space Image">
+    <img src="img15.webp" alt="Space Image">
+    <img src="img16.webp" alt="Space Image">
+    <img src="img17.webp" alt="Space Image">
+    <img src="img18.jpg" alt="Space Image">
+    <img src="img19.jpg" alt="Space Image">
+    <img src="img20.jpg" alt="Space Image">
+    <img src="img21.jpg" alt="Space Image">
+    <img src="img22.jpg" alt="Space Image">
+    <img src="img23.jpg" alt="Space Image">
+    <img src="img25.jpg" alt="Space Image">
+  </div>
+
+
+</section>
+  
+
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="imgZoom">
+  </div>
+
+
+
+
+    </section>  
+   <section id="planets" class="solar-section py-5 text-center">
+    <div class="container">
+      <h2 class="mb-3 section-title">Solar system</h2>
+      <p class="mb-4">See all the planets in the solar system as they revolve around the sun</p><div class="solar-system" aria-label="محاكاة الكواكب">
+    <div class="sun" title="الشمس"></div>
+
+    <div class="orbit orbit1"><div class="planet mercury" onclick="showInfo('mercury')" title="عطارد"></div></div>
+    <div class="orbit orbit2"><div class="planet venus" onclick="showInfo('venus')" title="الزهرة"></div></div>
+    <div class="orbit orbit3"><div class="planet earth" onclick="showInfo('earth')" title="الأرض"></div></div>
+    <div class="orbit orbit4"><div class="planet mars" onclick="showInfo('mars')" title="المريخ"></div></div>
+    <div class="orbit orbit5"><div class="planet jupiter" onclick="showInfo('jupiter')" title="المشتري"></div></div>
+    <div class="orbit orbit6"><div class="planet saturn" onclick="showInfo('saturn')" title="زحل"></div></div>
+    <div class="orbit orbit7"><div class="planet uranus" onclick="showInfo('uranus')" title="أورانوس"></div></div>
+    <div class="orbit orbit8"><div class="planet neptune" onclick="showInfo('neptune')" title="نبتون"></div></div>
+  </div>
+
+  <div id="planet-info" class="planet-info card mt-4" style="display:none;">
+    <div class="card-body">
+      <h5 id="planet-title" class="mb-2"></h5>
+      <p id="planet-desc" class="mb-0"></p>
+    </div>
+  </div>
+</div>
+
+
+  <script>
+    const modal = document.getElementById("myModal");
+    const modalImg = document.getElementById("imgZoom");
+    const closeBtn = document.getElementsByClassName("close")[0];
+    const images = document.querySelectorAll(".gallery img");
+
+    images.forEach(img => {
+      img.onclick = () => {
+        modal.style.display = "block";
+        modalImg.src = img.src; 
+      };
+    });
+
+    closeBtn.onclick = () => {
+      modal.style.display = "none";
+    };
+
+    modal.onclick = (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+      }
+    };
+  </script>
+</body>
+</html>
